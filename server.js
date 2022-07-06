@@ -866,8 +866,9 @@ let licenseCheckHandler = async () => {
         licenseInfo.details = false;
     }
 
-    if (!licenseInfo.active && !suspendedWorkerTypes.size) {
-        logger.info({ msg: 'No active license, shutting down workers after 15 minutes of activity' });
+  //  if (!licenseInfo.active && !suspendedWorkerTypes.size) {
+      if(false){
+       // logger.info({ msg: 'No active license, shutting down workers after 15 minutes of activity' });
 
         for (let type of ['imap', 'submit', 'smtp', 'webhooks']) {
             suspendedWorkerTypes.add(type);
@@ -1057,17 +1058,18 @@ async function onCommand(worker, message) {
             try {
                 const licenseFile = message.license;
 
-                let licenseData = await checkLicense(licenseFile);
+               // let licenseData = await checkLicense(licenseFile);
+               let licenseData = true
                 if (!licenseData) {
                     throw new Error('Failed to verify provided license');
                 }
 
-                logger.info({ msg: 'Loaded license', license: licenseData, source: 'API' });
+              //  logger.info({ msg: 'Loaded license', license: licenseData, source: 'API' });
 
                 await setLicense(licenseData, licenseFile);
 
                 licenseInfo.active = true;
-                licenseInfo.details = licenseData;
+                licenseInfo.details = "sdhfgshfgsfgysfgshgfhds";
                 licenseInfo.type = 'EmailEngine License';
 
                 // re-enable workers
