@@ -11,8 +11,10 @@
         "raw": "EENGINE_LOG_RAW=true node server --dbs.redis='redis://127.0.0.1:6379/9' | eerawlog",
         "test": "grunt",
         "swagger": "./getswagger.sh",
+        "build-source": "rm -rf node_modules package-lock.json && npm install && npm run licenses && rm -rf node_modules package-lock.json && npm install --production && rm -rf package-lock.json && ./update-info.sh",
         "build-dist": "npx pkg --compress Brotli package.json && rm -rf package-lock.json && npm install",
         "build-dist-fast": "npx pkg --debug package.json && rm -rf package-lock.json && npm install",
+        "licenses": "license-checker --json | node license-table.js > static/licenses.html",
         "postinstall": "npm run licenses"
     },
     "keywords": [
@@ -65,7 +67,7 @@
         "jquery": "3.6.0",
         "js-beautify": "1.14.4",
         "libmime": "5.1.0",
-       
+        "license-checker": "25.0.1",
         "mailparser": "3.5.0",
         "mailsplit": "5.3.2",
         "minimist": "1.2.6",

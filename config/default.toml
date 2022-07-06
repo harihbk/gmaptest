@@ -14,7 +14,7 @@ notify=1
 #secret = "secret_encryption_key" # key to encrypt passwords and Oauth tokens in DB
 
 [api]
-port = 3000
+port = 3030
 host = "127.0.0.1" # by default API server is accessible from localhost only
 maxSize = "5M" # maximum size of an attachment when submitting or uploading messages
 #auth = "user:pass" # If set then uses Basic Auth
